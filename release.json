@@ -6,9 +6,9 @@
    "n": 1,
    "title": "Storyboard reviewed",
    "pass": "This board agreed, wording and design",
-   "done": false,
-   "date": "",
-   "evidence": ""
+   "done": true,
+   "date": "18 Nov 2026",
+   "evidence": "Board ZR-SR-001 reviewed by the owner and brought to revision B: every registrant under every parent (primary or alias, with a Migrate option and a required move when a parent is lost), suspensions follow the account to every parent, one name per account stated as our precaution until the Public Suffix List, and each parent kept at two years of registration as the list requires."
   },
   {
    "n": 2,
