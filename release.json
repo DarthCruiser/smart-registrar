@@ -1,0 +1,86 @@
+{
+ "release": "launch",
+ "why": "The Smart Registrar is one workflow: names, accounts, the hourly DNSSEC check, notices, deactivation and abuse suspension only work safely together. The first public name goes live only when the whole of it is proven.",
+ "gates": [
+  {
+   "n": 1,
+   "title": "Storyboard reviewed",
+   "pass": "This board agreed, wording and design",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 2,
+   "title": "Engine API defined",
+   "pass": "Endpoints, authentication and the connector Steward uses",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 3,
+   "title": "Hourly check proven",
+   "pass": "Check, notices, deactivation and restoration on test names",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 4,
+   "title": "Abuse and sign-up checks",
+   "pass": "Lists chosen, with licence terms; threat check at sign-up",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 5,
+   "title": "Privacy notice",
+   "pass": "Published, with a retention period for addresses and logs",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 6,
+   "title": "Registrant PowerDNS-Admin",
+   "pass": "Single sign-on, each registrant seeing only their zones",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 7,
+   "title": "Steward entitlements",
+   "pass": "Trial to lapse, end to end, DS removed before signing stops",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 8,
+   "title": "Registry VMs at two sites",
+   "pass": "Built from the image, replaced, standby promoted",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 9,
+   "title": "eng.quest live",
+   "pass": "The first public name, signed and validating",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 10,
+   "title": "Public Suffix List evidence",
+   "pass": "Per-account separation measured and published",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  }
+ ]
+}
