@@ -16,7 +16,7 @@
    "pass": "Endpoints, authentication and the connector Steward uses",
    "done": false,
    "date": "",
-   "evidence": ""
+   "evidence": "Drafted 18 Nov 2026, under review"
   },
   {
    "n": 3,
@@ -44,6 +44,14 @@
   },
   {
    "n": 6,
+   "title": "Mail proven",
+   "pass": "Both nodes send and receive; every required readiness check passes; one node drained while the other carries all mail; whitelisting proven at sign-up",
+   "done": false,
+   "date": "",
+   "evidence": ""
+  },
+  {
+   "n": 7,
    "title": "Registrant PowerDNS-Admin",
    "pass": "Single sign-on, each registrant seeing only their zones",
    "done": false,
@@ -51,7 +59,7 @@
    "evidence": ""
   },
   {
-   "n": 7,
+   "n": 8,
    "title": "Steward entitlements",
    "pass": "Trial to lapse, end to end, DS removed before signing stops",
    "done": false,
@@ -59,7 +67,7 @@
    "evidence": ""
   },
   {
-   "n": 8,
+   "n": 9,
    "title": "Registry VMs at two sites",
    "pass": "Built from the image, replaced, standby promoted",
    "done": false,
@@ -67,7 +75,7 @@
    "evidence": ""
   },
   {
-   "n": 9,
+   "n": 10,
    "title": "eng.quest live",
    "pass": "The first public name, signed and validating",
    "done": false,
@@ -75,7 +83,7 @@
    "evidence": ""
   },
   {
-   "n": 10,
+   "n": 11,
    "title": "Public Suffix List evidence",
    "pass": "Per-account separation measured and published",
    "done": false,

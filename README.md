@@ -29,11 +29,12 @@ The registry is one workflow, and it is at the design stage, before any code. Th
 | 3 | Hourly check proven | Check, notices, deactivation and restoration on test names |
 | 4 | Abuse and sign-up checks | Lists chosen, with licence terms; threat check at sign-up |
 | 5 | Privacy notice | Published, with a retention period for addresses and logs |
-| 6 | Registrant PowerDNS-Admin | Single sign-on, each registrant seeing only their zones |
-| 7 | Steward entitlements | Trial to lapse, end to end, DS removed before signing stops |
-| 8 | Registry VMs at two sites | Built from the image, replaced, standby promoted |
-| 9 | eng.quest live | The first public name, signed and validating |
-| 10 | Public Suffix List evidence | Per-account separation measured and published |
+| 6 | Mail proven | Both nodes send and receive; every required readiness check passes; one node drained while the other carries all mail; whitelisting proven at sign-up |
+| 7 | Registrant PowerDNS-Admin | Single sign-on, each registrant seeing only their zones |
+| 8 | Steward entitlements | Trial to lapse, end to end, DS removed before signing stops |
+| 9 | Registry VMs at two sites | Built from the image, replaced, standby promoted |
+| 10 | eng.quest live | The first public name, signed and validating |
+| 11 | Public Suffix List evidence | Per-account separation measured and published |
 
 Pricing is published on the sign-up page, not in this repository.
 
