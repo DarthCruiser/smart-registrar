@@ -14,9 +14,9 @@
    "n": 2,
    "title": "Engine API defined",
    "pass": "Endpoints, authentication and the connector Steward uses",
-   "done": false,
-   "date": "",
-   "evidence": "Drafted 18 Nov 2026, under review"
+   "done": true,
+   "date": "19 Nov 2026",
+   "evidence": "Engine API agreed by the owner: four surfaces, each with its own revocable key (registrants by OpenID Connect and personal tokens; Steward, entitlement events and the parent path by Ed25519-signed requests); Steward connects as one more registrar, scoped to entitled names; entitlement events ordered and reconciled hourly; the parent path sets one name’s state only; a change is done when every parent nameserver serves it."
   },
   {
    "n": 3,
