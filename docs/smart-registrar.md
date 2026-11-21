@@ -152,19 +152,55 @@ it lacked to be plug and play is what Steward provides. Two instances of the sam
 - To prove at build time, on the PowerDNS-Admin version in use: the sign-in carries the registrant's account and
   PowerDNS-Admin assigns their zones from it, with no manual step.
 
-## Ways to stay signed
+## Ways to stay signed (decided 21 November 2026)
 
-The name is free in every case. What differs is who signs it.
+The name is free in every case, and so is everything else: nothing is sold, so there is no payment engine and no
+VAT. What differs is who signs it.
 
-1. **Your own DNS.** Point the name at your own nameservers, sign it there, and add your DS through the control
-   panel or the API.
-2. **Connected to DNSSEC Steward**, by entitlement:
-   - a free trial (30 days)
-   - a paid period
-   - a community reward, redeemed with channel points
-   - an active subscription to the channel (no points needed)
+The account page, once sign-up is finished, offers:
 
-Pricing is published on the sign-up page, not in this repository.
+**Signed by DNSSEC Steward: a thank-you to subscribers.** Steward signing is given to subscribers of the channel on
+Twitch, on the basis of a normal monthly subscription. Any active sub counts: paid, Prime or gifted. Once an option
+is chosen, the DNSSEC switch becomes available in the registrant's DNS control panel (PowerDNS-Admin).
+
+- **Standard terms:** one monthly sub, one month of signing.
+- **Bonus months, as thanks** (the current offer; it may change with notice):
+  - year 1, every new subscriber: one sub covers **12 months** (1 + 11 bonus months);
+  - from year 2, an account with a single free name: **12 months** (1 + 11);
+  - from year 2, an account with more than one name: **6 months** (1 + 5).
+- **Only two moments are checked**, and only one question is asked of Twitch: *is there an active sub right now?*
+  1. when signing is asked for (sign-up, or re-enabling after it stopped): yes, signing starts; no, "no active sub
+     found", and the registrant can subscribe and try again or sign the name themselves;
+  2. on the cover's end date: yes, signing renews for the account's next period; no, signing stops (see "Expiry").
+  How often someone subscribes in between is their choice; nothing is counted.
+- **Two weeks before the end date** the registrant is thanked for the sub and told the date signing continues to,
+  that the check happens on that date, and which zones it covers.
+- The registrant links their Twitch account once (Twitch's own sign-in); the registry asks Twitch only whether that
+  account has an active sub to the channel. Channel points are not used for now.
+
+**Self-signed: always free.** Point the name at your own nameservers. Once they have propagated, create your DS
+record at your DNS host and add it on the account page or through the API.
+
+## Expiry (decided 21 November 2026; replaces the 30-day lapse window)
+
+On the end date, with no active sub, the cluster's DNS service stops for the whole account: hosting and signing
+are for subscribers. A registrant leaving takes everything with them.
+
+- **The free name, still with us:** switched to the registry's **deactivated page** on the end date itself, with no
+  unsigned period and no notice clock. The parent's delegation is replaced in one step, which removes Steward's DS
+  at the same moment, so the name is never delegated unsigned. The page's addresses are held in the parent zone,
+  which is signed, so validating resolvers load the page too. Our zone for it is then removed. It comes back with an
+  active sub, or once it points at the registrant's own signed DNS and passes the check.
+- **The free name, already signed elsewhere:** not affected. Moving it before the end date is the registrant's
+  orderly route to self-signing.
+- **The registrant's own domains (DNS hosting only):** DNSSEC is switched off in the safe order: the DS is removed
+  at their registrar first (through their registrar API key, or by them on request), and signing stops only once it
+  has gone. They keep resolving, unsigned, for a **14-day wind-down** (a setting), so they can be moved and signed
+  wherever the registrant chooses; then they are removed from the cluster. Off our system they are not our concern.
+  A per-domain choice of what happens at expiry can be added later; this is the default.
+- A free name is never left delegated without a valid signature: for users behind validating resolvers (Google,
+  Cloudflare, Quad9 and many ISPs) it would simply fail. Names under a free name need no separate rule: the free
+  name is signed, and where it points is within the registry's gift.
 
 ## The hourly check (every name, every hour)
 
@@ -289,7 +325,7 @@ One name per account only holds if accounts are not free to mass-produce:
   so one mailbox is one account;
 - the sign-up address is checked against threat lists; a flagged address cannot sign up;
 - sign-ups are rate-limited per address and network range;
-- the Steward trial starts only after verification.
+- Steward signing starts only after verification, and only with an active sub.
 
 ## Email (decided 18 November 2026)
 
@@ -306,7 +342,7 @@ mailbox is settled **at sign-up**, not earned over time.
      Gmail, Outlook, iCloud, Yahoo, or their own domain): mark it *not spam*, add the sending address to
      contacts or safe senders, and on their own mail server or company filter, allow it there.
   3. A second email is sent, which must be opened **from the inbox** and clicked. Until then nothing is delegated
-     and no trial starts.
+     and no signing starts.
   4. The account records that whitelisting was confirmed, when, and for which provider. A hard bounce or a new
      contact address sends the account through steps 2 and 3 again.
 - **Stable sending**: one From address on every node, so the approval keeps holding whichever node sends. SPF
@@ -411,9 +447,9 @@ decided before launch.
 
 | Event | What happens |
 |---|---|
-| Entitlement granted | the engine requests an intake: Steward creates the zone, signs it, and places the DS through the engine's connector; the engine writes NS and DS into the parent and reads them back |
-| Entitlement renewed | nothing changes in DNS; the lapse clock resets |
-| Entitlement lapsed | see "Lapse" below |
+| Entitlement granted (active sub found) | the engine requests an intake: Steward creates the zone, signs it, and places the DS through the engine's connector; the engine writes NS and DS into the parent and reads them back |
+| Entitlement renewed (active sub on the end date) | nothing changes in DNS; the cover runs for the next period |
+| Entitlement ended (no active sub on the end date) | see "Expiry" above |
 
 Rules for dependable hooks:
 
@@ -425,16 +461,9 @@ Rules for dependable hooks:
 
 ## Lapse
 
-| When | What happens |
-|---|---|
-| Before the entitlement ends | renewal reminders |
-| Day 0 (lapse) | Steward keeps the zone **signed**, snapshots the registrant's records, and points the web addresses (the name and `www`, A and AAAA) to the renewal page. Mail (MX) and TXT records keep working, so notices reach the registrant even when their contact address is on this name. An "expired" notice appears in the name's responses. The control panel is greyed out. |
-| Days 0 to 30 | the name still validates and passes the hourly check. Two actions stay available: **renew** (the snapshot is restored exactly) or **switch out** to the registrant's own DS or nameservers. |
-| Day 30 | Steward **removes its DS through the engine first**, then stops signing. The name is now unsigned, and the normal hourly check takes over: notice, fix-now notice, deactivation. |
-| After deactivation | the final "your domain has been deactivated" notice is sent while mail still works; then the zone is removed from the cluster and the delegation withdrawn. |
-
-Removing Steward's DS before stopping signing matters: stopping first would leave the parent pointing at a key
-that no longer signs, and the name would fail validation outright instead of showing as unsigned.
+Replaced on 21 November 2026 by "Expiry" above: there is no 30-day signed window, and no renewal page. Removing
+Steward's DS before stopping signing still matters for the registrant's own domains: stopping first would leave the
+parent pointing at a key that no longer signs, and the domain would fail validation outright.
 
 ## Switching out (from Steward to your own signing)
 
