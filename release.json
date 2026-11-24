@@ -60,8 +60,8 @@
   },
   {
    "n": 8,
-   "title": "Steward entitlements",
-   "pass": "Trial to lapse, end to end, DS removed before signing stops",
+   "title": "Steward signing for subscribers",
+   "pass": "Sub seen, cover runs, lapse ends signing in order (DS removed first)",
    "done": false,
    "date": "",
    "evidence": ""
