@@ -12,7 +12,9 @@ A domain can be signed perfectly and still be unprotected: validation only works
 - **One check for every name, every hour:** a notice on the first failure, a fix-now notice 24 hours later, deactivation 24 hours after that, and automatic restoration as soon as the name validates again.
 - **Abuse:** checked in the same hourly cycle. A listed name is suspended permanently and never reissued. One name per account until the domain is on the Public Suffix List.
 - **The control panel is PowerDNS-Admin:** one sign-in with the registry account, only your own zone. On your own nameservers, a DS is checked against the keys you serve before it is published, and moves and key rollovers run in timed stages, from the panel or the API. With Steward, your records open once signing starts.
-- **Web forwarding:** a Steward-signed name can send its visitors to another address while its mail and other records stay as they are. Parking for new names, and forwarding www, wait for the Public Suffix List.
+- **A certificate, a site and a status page for every name:** each name gets its own Let's Encrypt certificate (the name and everything below it), issued and renewed by the registry. Within minutes of sign-up the name and its www show the registrant's own site, written from the title and purpose they gave and edited in the control panel; the registry hosts only their words, in a fixed static page. status.name shows the world whether the name is signed and validating, its certificate, and thirty days of hourly checks. Until the Public Suffix List, sign-up pauses, saying when it reopens, rather than issue a name it cannot secure.
+- **Web forwarding:** a Steward-signed name can send its visitors to another address instead, while its mail and other records stay as they are.
+- **Free signing:** the operator can give a name Steward signing without a sub, for months or until revoked; ending it only removes the DS, in order.
 - **Your own domain stays yours:** add a domain registered anywhere, move its DNS here and have Steward sign it. We are only ever the registrar of our own free names.
 - **If we stop:** Steward removes its DS first, so every registrant's own domain keeps resolving wherever they point it.
 
@@ -20,9 +22,13 @@ A domain can be signed perfectly and still be unprotected: validation only works
 
 Two projects, one story. **DNSSEC Steward** runs DNSSEC unattended: signing, key rollovers and the DS at each registrar. **The Smart Registrar** issues names and holds every one to the rule. To Steward, the registrar is one more registrar connector; Steward is one way, not the only way, for a registrant to stay signed. The registry decides from public DNS only, so it keeps working if Steward's signing is paused.
 
+## Next: the DNSSEC Academy
+
+A course in DNSSEC that ends in an exam. Pass it and your name is signed by DNSSEC Steward free for a set number of months, granted the same way as free signing, with the registry's own services as the worked examples. A second course builds your own signing nameserver, with Steward signing your name free while you do it.
+
 ## Why there are no release files yet
 
-The registry is one workflow. It is built and running on test names, but the first public name goes live only when the whole of it is proven. The gates are in [`release.json`](release.json); each is ticked by a commit when it passes, so this repository's history is the record. The board reads the same file live (panel 10).
+The registry is one workflow. It is running with its first names, but registration opens to the public only when the whole of it is proven. The gates are in [`release.json`](release.json); each is ticked by a commit when it passes, so this repository's history is the record. The board reads the same file live (panel 10).
 
 | # | Gate | Passing means |
 |---|---|---|

@@ -38,9 +38,9 @@
    "n": 5,
    "title": "Privacy notice",
    "pass": "Published, with a retention period for addresses and logs",
-   "done": false,
-   "date": "",
-   "evidence": ""
+   "done": true,
+   "date": "25 Nov 2026",
+   "evidence": "Privacy notice published at /registry/privacy, kept and versioned in the registry, with a retention period for every kind of information; updated the same day for certificates, free sites and status pages."
   },
   {
    "n": 6,
@@ -54,9 +54,9 @@
    "n": 7,
    "title": "Registrant PowerDNS-Admin",
    "pass": "Single sign-on, each registrant seeing only their zones",
-   "done": false,
-   "date": "",
-   "evidence": ""
+   "done": true,
+   "date": "25 Nov 2026",
+   "evidence": "Promoted from the preview to live (8443) on 25 November: one sign-in with the registry account, each registrant seeing only their own zone, with the Your site, Web forwarding and status cards."
   },
   {
    "n": 8,
