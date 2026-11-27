@@ -78,9 +78,9 @@
    "n": 10,
    "title": "eng.quest live",
    "pass": "The first public name, signed and validating",
-   "done": false,
-   "date": "",
-   "evidence": ""
+   "done": true,
+   "date": "27 Nov 2026",
+   "evidence": "academy.eng.quest, the first public name, is signed with its own DS at eng.quest (key tag 15683) and validates (AD) on Cloudflare 1.1.1.1 and Google 8.8.8.8, checked from outside on 27 Nov 2026; eng.quest's own DS at .quest validates on both. The hourly check is running, with 3,039 checks recorded."
   },
   {
    "n": 11,
